@@ -19,8 +19,15 @@ public class ProviderServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("chich").secret("chich")
-                .scopes("app").authorizedGrantTypes("authorization_code")
-                .redirectUris("http://localhost:9000/callback");
+               .scopes("app").authorizedGrantTypes("authorization_code")
+               .redirectUris("http://localhost:9000/callback")
+               .and().withClient("choe").secret("choe")
+               .scopes("app").authorizedGrantTypes("implicit")
+               .redirectUris("http://localhost:9000/callback")
+               .accessTokenValiditySeconds(3600)
+               .and().withClient("tac").secret("tac")
+               .scopes("app").authorizedGrantTypes("password")
+               .redirectUris("http://localhost:9000/callback");
     }
 
     @Override
