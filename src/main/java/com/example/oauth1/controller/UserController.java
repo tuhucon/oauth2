@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,11 @@ public class UserController {
     public String basic() {
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
         return "basic";
+    }
+
+    @GetMapping("/api/pub")
+    public String pub() {
+        return "pub";
     }
 
     @GetMapping("/filter")
