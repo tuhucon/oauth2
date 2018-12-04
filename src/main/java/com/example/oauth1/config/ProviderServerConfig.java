@@ -33,7 +33,10 @@ public class ProviderServerConfig extends AuthorizationServerConfigurerAdapter {
                .accessTokenValiditySeconds(3600)
                .and().withClient("tac").secret("tac")
                .scopes("app").authorizedGrantTypes("password")
-               .redirectUris("http://localhost:9000/callback");
+               .redirectUris("http://localhost:9000/callback")
+               .and().withClient("ke").secret("ke")
+               .authorizedGrantTypes("client_credentials")
+               .scopes("app");
     }
 
     @Override
