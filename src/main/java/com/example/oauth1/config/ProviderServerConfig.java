@@ -3,6 +3,7 @@ package com.example.oauth1.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.oauth2.common.ExpiringOAuth2RefreshToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -35,7 +36,9 @@ public class ProviderServerConfig extends AuthorizationServerConfigurerAdapter {
                .scopes("app").authorizedGrantTypes("password")
                .redirectUris("http://localhost:9000/callback")
                .and().withClient("ke").secret("ke")
-               .authorizedGrantTypes("client_credentials")
+               .authorizedGrantTypes("client_credentials", "password", "refresh_token")
+               .accessTokenValiditySeconds(120)
+               .refreshTokenValiditySeconds(300)
                .scopes("app");
     }
 
