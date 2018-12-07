@@ -32,6 +32,16 @@ public class UserController {
         return "pub";
     }
 
+    @GetMapping("/b/api/me")
+    public String me1() {
+        return "me";
+    }
+
+    @GetMapping("/b/api/basic")
+    public String basic1() {
+        return "basic";
+    }
+
     @GetMapping("/filter")
     public String filter(HttpServletRequest request) {
         FilterChainProxy proxy = webApplicationContext.getBean("springSecurityFilterChain", FilterChainProxy.class);

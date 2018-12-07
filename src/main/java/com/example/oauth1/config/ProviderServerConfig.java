@@ -47,12 +47,13 @@ public class ProviderServerConfig extends AuthorizationServerConfigurerAdapter {
                .accessTokenValiditySeconds(3600)
                .and().withClient("tac").secret("tac")
                .scopes("app").authorizedGrantTypes("password")
-               .redirectUris("http://localhost:9000/callback")
+                .resourceIds("a")
                .and().withClient("ke").secret("ke")
                .authorizedGrantTypes("client_credentials", "password", "refresh_token")
                .accessTokenValiditySeconds(120)
                .refreshTokenValiditySeconds(300)
-               .scopes("app");
+               .scopes("app")
+                .resourceIds("b");
 //        clients.jdbc(dataSource);
     }
 
